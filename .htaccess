@@ -1,0 +1,25 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  
+  RewriteCond %{HTTP_ACCEPT} image/webp
+  
+  
+  RewriteCond %{REQUEST_FILENAME}.webp -f
+  
+ 
+  RewriteRule (.+)\.(jpe?g|png)$ %{REQUEST_URI}.webp [T=image/webp,E=EXISTING:1]
+  
+ 
+  Header append Vary Accept env=EXISTING
+  
+  
+  <FilesMatch "\.(jpe?g|png)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
+  
+  
+  <FilesMatch "\.(js|css|png|jpe?g)$">
+    Header set Cache-Control "max-age=604800, public"
+  </FilesMatch>
+</IfModule>
