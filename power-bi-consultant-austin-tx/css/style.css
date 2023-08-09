@@ -1285,4 +1285,7 @@ footer p a, footer p a:hover {
 .footer_links li a {
     color: #4d4d4d;
 }
+.location-pages{
+	margin-bottom:100px;
+}
 }
